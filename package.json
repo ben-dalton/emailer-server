@@ -8,8 +8,7 @@
     "npm": "5.8.0"
   },
   "scripts": {
-    "start": "ts-node ./src/index.ts",
-    "postinstall": "npm run typings && npm run compile"
+    "start": "ts-node ./src/index.ts"
   },
   "author": "Ben Dalton",
   "license": "ISC",
