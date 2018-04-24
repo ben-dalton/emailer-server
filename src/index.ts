@@ -1,6 +1,6 @@
 import app from './App';
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, (err: any) => {
   if (err) {
@@ -12,6 +12,6 @@ app.listen(PORT, (err: any) => {
 
 app.get('/', (req, res) => {
   res.send({
-    hi: 'there',
+    hey: 'there',
   });
 });
