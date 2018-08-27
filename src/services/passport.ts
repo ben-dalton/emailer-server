@@ -27,7 +27,7 @@ const options: StrategyOptions = {
   callbackURL: keys.googleCallbackURL,
 };
 
-const verify: VerifyFunction = (
+const verify: VerifyFunction = async (
   accessToken: string,
   refreshToken: string,
   profile: any,
@@ -37,17 +37,12 @@ const verify: VerifyFunction = (
   console.log('refresh token:', refreshToken);
   console.log('profile:', profile);
 
-  User.findOne({ googleId: profile.id })
-    .then((existingUser) => {
-      if (existingUser) {
-        done(null, existingUser);
-      } else {
-        new User({ googleId: profile.id })
-          .save()
-          .then(user => done(null, user));
-      }
-    })
-    .catch(error => console.log(error));
+  const existingUser = await User.findOne({ googleId: profile.id });
+  if (existingUser) {
+    return done(null, existingUser);
+  }
+  const user = await new User({ googleId: profile.id }).save();
+  done(null, user);
 };
 
 passport.use(new GoogleStrategy(options, verify));

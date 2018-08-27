@@ -1,4 +1,5 @@
 import * as passport from 'passport';
+import { keys } from '../config/keys';
 
 export const authRoutes = (app) => {
   app.get('/', (req, res) => {
