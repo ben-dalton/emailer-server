@@ -21,7 +21,7 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div className="container nav-wrapper">
           <Link to={this.getRoot()} className="left brand-logo">Emailer</Link>
             <ul id="nav-mobile" className="right hide-on-sm-and-down">
               {this.renderContent()}
